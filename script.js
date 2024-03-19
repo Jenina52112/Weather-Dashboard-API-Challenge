@@ -1,36 +1,34 @@
 
-const animals = ['ant', 'bison', 'camel', 'duck', 'elephant'];
-
-// console.log(animals.slice(2));
-// // Expected output: Array ["camel", "duck", "elephant"]
-
-// console.log(animals.slice(2, 4));
-// // Expected output: Array ["camel", "duck"]
-
-// console.log(animals.slice(1, 5));
-// // Expected output: Array ["bison", "camel", "duck", "elephant"]
-
-// console.log(animals.slice(-2));
-// // Expected output: Array ["duck", "elephant"]
-
-// console.log(animals.slice(2, -1));
-// // Expected output: Array ["camel", "duck"]
-
-// console.log(animals.slice());
-// // Expected output: Array ["ant", "bison", "camel", "duck", "elephant"]
-
 var buttonEl = document.getElementById('btnEl');
 var tempText = document.getElementById('temperature');
 var windText = document.getElementById('wind');
 var humidText = document.getElementById('humid');
 var city = document.getElementById('cityName');
 var date = document.getElementById('dateToday');
+var day1Div = document.getElementById('day1');
+var day2Div = document.getElementById('day2');
+var day3Div = document.getElementById('day3');
+var day4Div = document.getElementById('day4');
+var day5Div= document.getElementById('day5');
+
 var apiKey = "1b13cd363449193c96068b99f99b527b"
 cityname = document.getElementById('userInput').value;
 // console.log(cityname)
 
 
 date.textContent = dayjs().format('MM' + '/' + 'D' + '/' + 'YYYY')
+
+var today = dayjs();
+
+day1Text = today.add(1, 'day').format('MM' + '/' + 'D' + '/' + 'YYYY');
+day1Div.textContent = day1Text
+day2Div.textContent = today.add(2, 'day').format('MM' + '/' + 'D' + '/' + 'YYYY');
+day3Div.textContent = today.add(3, 'day').format('MM' + '/' + 'D' + '/' + 'YYYY');
+day4Div.textContent = today.add(4, 'day').format('MM' + '/' + 'D' + '/' + 'YYYY');
+day5Div.textContent = today.add(5, 'day').format('MM' + '/' + 'D' + '/' + 'YYYY');
+
+
+
 
 function fetchUrl(){
 var apiKey = "1b13cd363449193c96068b99f99b527b"
