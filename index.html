@@ -11,16 +11,19 @@
 <header>WEATHER DASHBOARD</header>
 <body>
 <!-- <i class="fa-solid fa-magnifying-glass"></i> -->
-
+<div id="container1">
 <section id = "searchEl">
-<h1>Search for a city</h1>
+<div>
+    <h1>Search for a city:</h1>
 <form action="">
 <input id = "userInput" type="text">
-
 </form>
+<br>
 <button id="btnEl">Search City</button>
 <ul id="historyList"></ul>
+</div>
 </section>
+
 
 <section id="searchResult">
     <h2><span id="cityName"></span> <span id="dateToday"></span></h2>
@@ -29,18 +32,18 @@
     <p id="humid"></p>
 </section>
 
-<h3>5-Day Forecast:</h3>
-
 <section id="future">
-    <div id="day1"></div>
-    <div id="day2"></div>
-    <div id="day3"></div>
-    <div id="day4"></div>
-    <div id="day5"></div>
+    <h3>5-Day Forecast:</h3>
+
+        <div id="futureCon">
+            <div id="day1"></div>
+            <div id="day2"></div>
+            <div id="day3"></div>
+            <div id="day4"></div>
+            <div id="day5"></div>
+        </div>
 </section>
-
-
-
+</div>
 </body>
 
 <script src="./script.js"></script>
