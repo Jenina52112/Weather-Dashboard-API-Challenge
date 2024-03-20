@@ -10,19 +10,23 @@ header{
     font-size: 60px;
     background-color: rgb(3, 137, 170);
     -webkit-text-stroke-width: 1px;
-  -webkit-text-stroke-color: white;
+    -webkit-text-stroke-color: white;
 }
 #btnEl {
     width: 230px;
     height: 30px;
-    background-color: rgb(178, 250, 250);
-    
+    background-color: rgb(178, 250, 250);  
+    font-size: 15px;
+    font-weight: 900;
+    border-width: 1px;
+}
+#btnEl:hover{
+    cursor: pointer;
+    transform: scale(1.1);
 }
 #userInput{
     width: 220px;
-    height: 30px;
-    
-    
+    height: 30px;  
 }
 h1{
     font-size: 40px;
@@ -41,79 +45,61 @@ h3{
 }
 #searchEl{
     padding: 10px;
-grid-column-start: 1;
-grid-column-end: 2;
-grid-row-start: 1;
-grid-row-end: 4;
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 1;
+    grid-row-end: 4;
 
 }
 #searchResult{
     font-size: 25px;
-padding: 10px;
-grid-column-start: 2;
-grid-column-end: 4;
-grid-row-start: 1;
-grid-row-end: 2;
-border: var(--borderalt)
+    padding: 10px;
+    grid-column-start: 2;
+    grid-column-end: 4;
+    grid-row-start: 1;
+    grid-row-end: 2;
+    border: var(--borderalt)
 }
 #future{
     text-align: center;
-    
     grid-column-start: 2;
     grid-column-end: 4;
     grid-row-start: 2;
-    grid-row-end: 4;
-
-  
+    grid-row-end: 4; 
 }
-#futureCon{
+#futureCon{   
     display: grid;
     grid-template-columns: 240px 240px 240px 240px 240px;
     grid-template-rows: 350px;
-   column-gap: 20px;
+    column-gap: 20px;
+}
+#day1, #day2,  #day3, #day4, #day5{
+    padding-top: 10px;
+    text-align: center;
+    border: var(--borderalt);
+    grid-row-start: 1;
+    grid-row-end: 2;
+    background-color: rgb(3, 137, 170);
+
 }
 #day1{
-    text-align: center;
-    border: var(--borderalt);
-    
     grid-column-start: 1;
     grid-column-end: 2;
-    grid-row-start: 1;
-    grid-row-end: 2;
 }
-#day2{
-    text-align: center;
-    border: var(--borderalt);
-    
+#day2{   
     grid-column-start: 2;
     grid-column-end: 3;
-    grid-row-start: 1;
-    grid-row-end: 2;
+
 }
-#day3{
-    text-align: center;
-    border: var(--borderalt);
-    
+#day3{    
     grid-column-start: 3;
     grid-column-end: 4;
-    grid-row-start: 1;
-    grid-row-end: 2;
 }
-#day4{
-    text-align: center;
-    border: var(--borderalt);
-    
+#day4{   
     grid-column-start: 4;
     grid-column-end: 5;
-    grid-row-start: 1;
-    grid-row-end: 2;
 }
-#day5{
-    text-align: center;
-    border: var(--borderalt);
-    
+#day5{   
     grid-column-start: 5;
     grid-column-end: 6;
-    grid-row-start: 1;
-    grid-row-end: 2;
 }
