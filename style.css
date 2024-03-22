@@ -80,7 +80,11 @@ h3{
     grid-row-start: 1;
     grid-row-end: 2;
     background-color: rgb(3, 137, 170);
-
+    font-size: 30px;
+    font-weight: 600;
+    color: white;
+    /* -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black; */
 }
 #day1{
     grid-column-start: 1;
