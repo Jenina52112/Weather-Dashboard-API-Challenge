@@ -81,33 +81,93 @@ fetch(fivedayUrl)
   })
   .then(result => {
 
-  //   //this logs all 40 lists
-  //   console.log(result)
-nextD = today.add(1, 'day').format('YYYY' + '-' + 'MM' + '-' + 'D')
+
+daysArray = []
+for (var i = 1; i <= 5; i++){
+    nextD = today.add([i], 'day').format('YYYY' + '-' + 'MM' + '-' + 'D')
+    
 console.log(nextD)
-sameday1 = result.list.filter(list => list.dt_txt.startsWith(nextD))
-console.log(sameday1)
-temp1 = result.list.filter(list => list.main.temp)
+samedayArray = result.list.filter(list => list.dt_txt.startsWith(nextD))
+console.log(samedayArray)
+daysArray.push(samedayArray)
+// temp = result.list.filter(list => list.main.temp)
+// console.log(temp)
 
-nextD2 = today.add(2, 'day').format('YYYY' + '-' + 'MM' + '-' + 'D')
-console.log(nextD2)
-sameday2 = result.list.filter(list => list.dt_txt.startsWith(nextD2))
-console.log(sameday2)
 
-nextD3 = today.add(3, 'day').format('YYYY' + '-' + 'MM' + '-' + 'D')
-console.log(nextD3)
-sameday3 = result.list.filter(list => list.dt_txt.startsWith(nextD3))
-console.log(sameday3)
 
-nextD4 = today.add(4, 'day').format('YYYY' + '-' + 'MM' + '-' + 'D')
-console.log(nextD4)
-sameday4 = result.list.filter(list => list.dt_txt.startsWith(nextD4))
-console.log(sameday4)
 
-nextD5 = today.add(5, 'day').format('YYYY' + '-' + 'MM' + '-' + 'D')
-console.log(nextD5)
-sameday5 = result.list.filter(list => list.dt_txt.startsWith(nextD5))
-console.log(sameday5)
+//START OF ORIGINAL HERE
+// nextD2 = today.add(2, 'day').format('YYYY' + '-' + 'MM' + '-' + 'D')
+// console.log(nextD2)
+// sameday2 = result.list.filter(list => list.dt_txt.startsWith(nextD2))
+// console.log(sameday2)
+
+// nextD3 = today.add(3, 'day').format('YYYY' + '-' + 'MM' + '-' + 'D')
+// console.log(nextD3)
+// sameday3 = result.list.filter(list => list.dt_txt.startsWith(nextD3))
+// console.log(sameday3)
+
+// nextD4 = today.add(4, 'day').format('YYYY' + '-' + 'MM' + '-' + 'D')
+// console.log(nextD4)
+// sameday4 = result.list.filter(list => list.dt_txt.startsWith(nextD4))
+// console.log(sameday4)
+
+// nextD5 = today.add(5, 'day').format('YYYY' + '-' + 'MM' + '-' + 'D')
+// console.log(nextD5)
+// sameday5 = result.list.filter(list => list.dt_txt.startsWith(nextD5))
+// console.log(sameday5)
+}
+console.log(daysArray)
+console.log(daysArray.length)
+temp1 = daysArray[2]
+console.log(temp1)
+
+
+for(var i = 0; i < daysArray.length; i++){
+  perDay = daysArray[i]
+  //perdayTemp = perDay.main.temp
+//console.log(perdayTemp)
+console.log(perDay.length)
+
+
+
+
+
+}
+
+for(var i = 0; i < perDay.length; i++){
+  day1Temp = perDay[i].main.temp
+  console.log(day1Temp)
+
+}
+
+
+
+// nextD = today.add(1, 'day').format('YYYY' + '-' + 'MM' + '-' + 'D')
+// console.log(nextD)
+// sameday1 = result.list.filter(list => list.dt_txt.startsWith(nextD))
+// console.log(sameday1)
+// temp1 = result.list.filter(list => list.main.temp)
+
+// nextD2 = today.add(2, 'day').format('YYYY' + '-' + 'MM' + '-' + 'D')
+// console.log(nextD2)
+// sameday2 = result.list.filter(list => list.dt_txt.startsWith(nextD2))
+// console.log(sameday2)
+
+// nextD3 = today.add(3, 'day').format('YYYY' + '-' + 'MM' + '-' + 'D')
+// console.log(nextD3)
+// sameday3 = result.list.filter(list => list.dt_txt.startsWith(nextD3))
+// console.log(sameday3)
+
+// nextD4 = today.add(4, 'day').format('YYYY' + '-' + 'MM' + '-' + 'D')
+// console.log(nextD4)
+// sameday4 = result.list.filter(list => list.dt_txt.startsWith(nextD4))
+// console.log(sameday4)
+
+// nextD5 = today.add(5, 'day').format('YYYY' + '-' + 'MM' + '-' + 'D')
+// console.log(nextD5)
+// sameday5 = result.list.filter(list => list.dt_txt.startsWith(nextD5))
+// console.log(sameday5)
 
 var temp1 = [sameday1[0].main.temp]
 var wind1 = [sameday1[0].wind.speed]
