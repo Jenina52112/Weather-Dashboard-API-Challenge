@@ -10,20 +10,12 @@ var day2Div = document.getElementById('day2');
 var day3Div = document.getElementById('day3');
 var day4Div = document.getElementById('day4');
 var day5Div= document.getElementById('day5');
-var day1C = document.getElementById('day1Sec');
-var day2C = document.getElementById('d2Content');
-var day3C = document.getElementById('d3Content');
-var day4C = document.getElementById('d4Content');
-var day5C = document.getElementById('d5Content');
 var historyList = document.getElementById('historyList');
 var iconElement = document.getElementById('iconEl');
 var icon1 = document.getElementById('icon1');
 var apiKey = "1b13cd363449193c96068b99f99b527b"
-cityname = document.getElementById('userInput').value;
-console.log(cityname)
+var cityname = document.getElementById('userInput').value;
 var today = dayjs()
-  console.log(today)
-var url  = 'https://api.openweathermap.org/data/2.5/weather?q=' + cityname + '&appid=' + apiKey + '&units=imperial';
 
 
 function fetchUrl(){
@@ -45,9 +37,7 @@ fetch(url)
 
     iconElement.textContent = ''
     iconEl = data.weather[0].icon;
-    console.log(iconEl)
     iconUrl = 'https://openweathermap.org/img/wn/' + iconEl + '.png'
-    console.log(iconUrl)
     imageEl = document.createElement('img')
     imageEl.src = iconUrl
     iconElement.appendChild(imageEl)
@@ -68,8 +58,6 @@ fetch(fivedayUrl)
     return response.json();
   })
   .then(result => {
-console.log(result)
-
 daysArray = []
 for (var i = 1; i <= 5; i++){
   nextD = today.add([i], 'day').format('YYYY' + '-' + 'MM' + '-' + 'DD')
@@ -135,18 +123,27 @@ maxTemp5 = Math.max(...tempList5)
 maxWind5 = Math.max(...windList5)
 maxhumid5 = Math.max(...humidList5)
 
-iconEl1 = day1[2].weather[0].icon;
-console.log(iconEl)
-iconUrl = 'https://openweathermap.org/img/wn/' + iconEl1 + '.png'
-imageEl1 = document.createElement('img')
-imageEl.src = iconUrl
-day1Icon = icon1.appendChild(imageEl1)
+iconEl1 = day1[0].weather[0].icon;
+iconUrl1 = 'https://openweathermap.org/img/wn/' + iconEl1 + '.png'
+document.getElementById('icon1').src = iconUrl1
+iconEl2 = day2[0].weather[0].icon;
+iconUrl2 = 'https://openweathermap.org/img/wn/' + iconEl2 + '.png'
+document.getElementById('icon2').src = iconUrl2
+iconEl3 = day3[0].weather[0].icon;
+iconUrl3 = 'https://openweathermap.org/img/wn/' + iconEl3 + '.png'
+document.getElementById('icon3').src = iconUrl3
+iconEl4 = day4[0].weather[0].icon;
+iconUrl4 = 'https://openweathermap.org/img/wn/' + iconEl4 + '.png'
+document.getElementById('icon4').src = iconUrl4
+iconEl5 = day5[0].weather[0].icon;
+iconUrl5 = 'https://openweathermap.org/img/wn/' + iconEl5 + '.png'
+document.getElementById('icon5').src = iconUrl5
 
-day1Div.textContent = day1Text + "\n \nTemp: " + maxTemp1 + " °F" + "\n Wind: " + maxWind1 + "\n Humidity: " + maxhumid1;
-day2Div.textContent = today.add(2, 'day').format('MM' + '/' + 'D' + '/' + 'YYYY') + "\n Temp: " + maxTemp2 + " °F" + "\n Wind: " + maxWind2 + "\n Humidity: " + maxhumid2;                     
-day3Div.textContent = today.add(3, 'day').format('MM' + '/' + 'D' + '/' + 'YYYY') + "\n Temp: " + maxTemp3 + " °F" + "\n Wind: " + maxWind3 + "\n Humidity: " + maxhumid3;
-day4Div.textContent = today.add(4, 'day').format('MM' + '/' + 'D' + '/' + 'YYYY') + "\n Temp: " + maxTemp4 + " °F" + "\n Wind: " + maxWind4 + "\n Humidity: " + maxhumid4;
-day5Div.textContent = today.add(5, 'day').format('MM' + '/' + 'D' + '/' + 'YYYY') + "\n Temp: " + maxTemp5 + " °F" + "\n Wind: " + maxWind5 + "\n Humidity: " + maxhumid5;
+day1Div.textContent = day1Text + '\nTemp: ' + maxTemp1 + ' °F' + '\n Wind: ' + maxWind1 + " MPH" + '\n Humidity: ' + maxhumid1 + " %";
+day2Div.textContent = today.add(2, 'day').format('MM' + '/' + 'D' + '/' + 'YYYY') + "\n Temp: " + maxTemp2 + " °F" + "\n Wind: " + maxWind2 + " MPH" + "\n Humidity: " + maxhumid2 + " %";                     
+day3Div.textContent = today.add(3, 'day').format('MM' + '/' + 'D' + '/' + 'YYYY') + "\n Temp: " + maxTemp3 + " °F" + "\n Wind: " + maxWind3 + " MPH" + "\n Humidity: " + maxhumid3 + " %";
+day4Div.textContent = today.add(4, 'day').format('MM' + '/' + 'D' + '/' + 'YYYY') + "\n Temp: " + maxTemp4 + " °F" + "\n Wind: " + maxWind4 + " MPH" + "\n Humidity: " + maxhumid4 + " %";
+day5Div.textContent = today.add(5, 'day').format('MM' + '/' + 'D' + '/' + 'YYYY') + "\n Temp: " + maxTemp5 + " °F" + "\n Wind: " + maxWind5 + " MPH" + "\n Humidity: " + maxhumid5 + " %";
 }
 )
 }
@@ -158,16 +155,13 @@ if(!storedList){
 }
 
 buttonEl.addEventListener('click', function(){
-  //starts here
-
+  fetchUrl()
+  fetch5Day()
   storedList.push(cityname)
   localStorage.setItem('listOfCity', JSON.stringify(storedList))
   console.log(storedList)
   console.log(cityname)
   renderList()  
-  //ends here
-  fetchUrl()
-  fetch5Day()
   city.textContent = cityname.toUpperCase()
 }
 )
@@ -179,17 +173,8 @@ function renderList(){
     liEl = document.createElement('li')
     liEl.classList.add('liClass');
     liEl.textContent = listObj.toUpperCase()
-    //liEl.innerHTML = cityname.toUpperCase()
-  // for(var i = 0; i > 0; i++){
-  // }
     historyList.appendChild(liEl);
-  
-      //     var btn = document.createElement("button");
-  //     btn.textContent = listObj;
-  //     btn.setAttribute("data-index", i);
-  
-  //     list.appendChild(btn);
-  
+
     liEl.addEventListener("click", function(event){
       date.textContent = dayjs().format('  (' + 'MM' + '/' + 'D' + '/' + 'YYYY' + ')')
       day1Text = today.add(1, 'day').format('MM' + '/' + 'D' + '/' + 'YYYY');
@@ -244,14 +229,6 @@ fetch(fivedayUrl)
     day4 = daysArray[3]
     day5 = daysArray[4]
   
-    // // iconElement1.textContent = ''
-    // iconEl1 = day1[0].weather[0].icon;
-    // console.log(iconEl1)
-    // iconUrl1 = 'https://openweathermap.org/img/wn/' + iconEl1 + '.png'
-    // imageEl1 = document.createElement('img')
-    // imageEl1.src = iconUrl1
-    // iconElement1.appendChild(imageEl1)
-  console.log(day1)
   tempList1 = []; windList1 = []; humidList1 = [];
   for (var i = 0; i < day1.length; i++){
     tempList1.push(day1[i].main.temp)
@@ -301,117 +278,31 @@ fetch(fivedayUrl)
   maxWind5 = Math.max(...windList5)
   maxhumid5 = Math.max(...humidList5)
   
-  day1Div.textContent = day1Text + "\n \nTemp: " + maxTemp1 + " °F" + "\n Wind: " + maxWind1 + "\n Humidity: " + maxhumid1;
-  day2Div.textContent = today.add(2, 'day').format('MM' + '/' + 'D' + '/' + 'YYYY') + "\n Temp: " + maxTemp2 + " °F" + "\n Wind: " + maxWind2 + "\n Humidity: " + maxhumid2;                     
-  day3Div.textContent = today.add(3, 'day').format('MM' + '/' + 'D' + '/' + 'YYYY') + "\n Temp: " + maxTemp3 + " °F" + "\n Wind: " + maxWind3 + "\n Humidity: " + maxhumid3;
-  day4Div.textContent = today.add(4, 'day').format('MM' + '/' + 'D' + '/' + 'YYYY') + "\n Temp: " + maxTemp4 + " °F" + "\n Wind: " + maxWind4 + "\n Humidity: " + maxhumid4;
-  day5Div.textContent = today.add(5, 'day').format('MM' + '/' + 'D' + '/' + 'YYYY') + "\n Temp: " + maxTemp5 + " °F" + "\n Wind: " + maxWind5 + "\n Humidity: " + maxhumid5;
+
+  iconEl1 = day1[0].weather[0].icon;
+  iconUrl1 = 'https://openweathermap.org/img/wn/' + iconEl1 + '.png'
+  document.getElementById('icon1').src = iconUrl1
+  iconEl2 = day2[0].weather[0].icon;
+  iconUrl2 = 'https://openweathermap.org/img/wn/' + iconEl2 + '.png'
+  document.getElementById('icon2').src = iconUrl2
+  iconEl3 = day3[0].weather[0].icon;
+  iconUrl3 = 'https://openweathermap.org/img/wn/' + iconEl3 + '.png'
+  document.getElementById('icon3').src = iconUrl3
+  iconEl4 = day4[0].weather[0].icon;
+  iconUrl4 = 'https://openweathermap.org/img/wn/' + iconEl4 + '.png'
+  document.getElementById('icon4').src = iconUrl4
+  iconEl5 = day5[0].weather[0].icon;
+  iconUrl5 = 'https://openweathermap.org/img/wn/' + iconEl5 + '.png'
+  document.getElementById('icon5').src = iconUrl5
+  
+  day1Div.textContent = day1Text + '\nTemp: ' + maxTemp1 + ' °F' + '\n Wind: ' + maxWind1 + " MPH" + '\n Humidity: ' + maxhumid1 + " %";
+  day2Div.textContent = today.add(2, 'day').format('MM' + '/' + 'D' + '/' + 'YYYY') + "\n Temp: " + maxTemp2 + " °F" + "\n Wind: " + maxWind2 + " MPH" + "\n Humidity: " + maxhumid2 + " %";                     
+  day3Div.textContent = today.add(3, 'day').format('MM' + '/' + 'D' + '/' + 'YYYY') + "\n Temp: " + maxTemp3 + " °F" + "\n Wind: " + maxWind3 + " MPH" + "\n Humidity: " + maxhumid3 + " %";
+  day4Div.textContent = today.add(4, 'day').format('MM' + '/' + 'D' + '/' + 'YYYY') + "\n Temp: " + maxTemp4 + " °F" + "\n Wind: " + maxWind4 + " MPH" + "\n Humidity: " + maxhumid4 + " %";
+  day5Div.textContent = today.add(5, 'day').format('MM' + '/' + 'D' + '/' + 'YYYY') + "\n Temp: " + maxTemp5 + " °F" + "\n Wind: " + maxWind5 + " MPH" + "\n Humidity: " + maxhumid5 + " %";
   }
   )
   })
 }
 }
 renderList()
-
-
-
-
-  //startshere
-  // searchBtn.addEventListener('click', function(){
-  //   var cityName = document.getElementById('userInput').value
-  // var apiUrl = 'https://api.openweathermap.org/data/2.5/weather?q=' + cityName + '&appid=' + apiKey + '&units=imperial';
-  
-  // var resultPage = document.getElementById('resultPage'); 
-  
-  // storedList.push(cityName)
-  // localStorage.setItem('listOfCity', JSON.stringify(storedList))
-  // renderList()
-  //   } )
-  //   var list = document.getElementById('listOfCity')
-  //   var listOfCity = [];
-  
-  //   function renderList(){
-  //     list.innerHTML ="";
-    
-  //     for (var i=0; i<storedList.length; i++ ) {
-  //     var listObj = storedList[i];
-  
-  //     var btn = document.createElement("button");
-  //     btn.textContent = listObj;
-  //     btn.setAttribute("data-index", i);
-  
-  //     list.appendChild(btn);
-  //     }}
-  
-  // renderList()
-  //ends here
-
-
-
-
-
-
-
-
-
-//starts here
-//   var storedList = JSON.parse(localStorage.getItem('listOfCity'))
-//   if(!storedList){
-//     storedList = [];
-//   }
-//   var storedList = JSON.parse(localStorage.getItem('listOfCity'))
-// if(!storedList){
-//   storedList = [];
-// }
-// console.log(storedList)
-
-// searchBtn.addEventListener('click', function(){
-//   var cityName = document.getElementById('userInput').value
-// var apiUrl = 'https://api.openweathermap.org/data/2.5/weather?q=' + cityName + '&appid=' + apiKey + '&units=imperial';
-
-// var resultPage = document.getElementById('resultPage'); 
-
-// storedList.push(cityName)
-// localStorage.setItem('listOfCity', JSON.stringify(storedList))
-// renderList()
-//   } )
-//   var list = document.getElementById('listOfCity')
-//   var listOfCity = [];
-
-//   function renderList(){
-//     list.innerHTML ="";
-  
-//     for (var i=0; i<storedList.length; i++ ) {
-//     var listObj = storedList[i];
-
-//     var btn = document.createElement("button");
-//     btn.textContent = listObj;
-//     btn.setAttribute("data-index", i);
-
-//     list.appendChild(btn);
-//     }}
-
-// renderList()
-
-// //ends here
-
-
-
-
-
-
-// }
-
-
-// function getLocal (){
-//   getCity = localStorage.getItem('my city')
-
-//   //createLi()
-// }
-
-// function createLi(){
-  
-// }
-
-//getLocal()
-
