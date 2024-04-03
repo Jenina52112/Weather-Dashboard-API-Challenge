@@ -6,5 +6,5 @@
 * Every city entered will be added to history where user can click and again be presented with current and forecast weather conditions.
 * Searched city history will remain even after refreshing the page.
 
-* Link to the deployed application: 
+* Link to the deployed application: https://jenina52112.github.io/Weather-Dashboard-API-Challenge/
 ![alt text](image.png)
